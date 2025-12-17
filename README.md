@@ -4,6 +4,10 @@ A collection of native macOS Quick Actions that let you transform text in **any 
 
 Highlight text anywhere (Notes, Slack, Browser, Mail), Right-Click, and watch it transform instantly.
 
+## 🎬 Demo
+
+![AI Shortcuts Demo](ai-shortcut-demo.gif)
+
 ---
 
 ## 🎯 Available Shortcuts
