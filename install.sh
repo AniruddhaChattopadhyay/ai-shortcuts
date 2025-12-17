@@ -2,7 +2,7 @@
 
 APP_DIR="$HOME/.mac-ai-companion"
 SERVICE_DIR="$HOME/Library/Services"
-REPO_BASE="https://raw.githubusercontent.com/AniruddhaChattopadhyay/ai-shortcuts/dev"
+REPO_BASE="https://raw.githubusercontent.com/AniruddhaChattopadhyay/ai-shortcuts/main"
 
 echo "✨ Installing Mac AI Shortcuts..."
 echo ""
