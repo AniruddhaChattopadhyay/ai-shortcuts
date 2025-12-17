@@ -6,7 +6,7 @@ Highlight text anywhere (Notes, Slack, Browser, Mail), Right-Click, and watch it
 
 ## 🎬 Demo
 
-<video src="ai-shortcut-demo.mov" controls></video>
+![AI Shortcuts Demo](ai-shortcut-demo.gif)
 
 ---
 
