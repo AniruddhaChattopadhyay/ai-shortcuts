@@ -1,8 +1,24 @@
-# ✨ Mac AI Rewrite
+# ✨ Mac AI Shortcuts
 
-A native macOS companion that lets you rewrite, fix, or summarize text in **any application** using OpenAI.
+A collection of native macOS Quick Actions that let you transform text in **any application** using OpenAI.
 
 Highlight text anywhere (Notes, Slack, Browser, Mail), Right-Click, and watch it transform instantly.
+
+---
+
+## 🎯 Available Shortcuts
+
+| Shortcut                 | What it does                                    |
+| ------------------------ | ----------------------------------------------- |
+| **✨ AI Rewrite**        | Rewrite text to be clear, professional, concise |
+| **📝 AI Summarize**      | Condense long text into key bullet points       |
+| **✓ AI Fix Grammar**     | Fix spelling, grammar, and punctuation          |
+| **😊 AI Make Casual**    | Rewrite in a friendly, conversational tone      |
+| **✂️ AI Make Shorter**   | Condense while keeping the meaning              |
+| **📖 AI Expand**         | Elaborate and add more detail                   |
+| **🌐 AI Translate**      | English → Spanish or Other → English            |
+| **💡 AI Explain Simply** | Explain in simple terms anyone can understand   |
+| **💬 AI Reply**          | Draft a response to a message                   |
 
 ---
 
@@ -13,7 +29,7 @@ Highlight text anywhere (Notes, Slack, Browser, Mail), Right-Click, and watch it
 | 🚀 **Zero Dependencies** | No Python, Node.js, or Homebrew required. Works on a fresh Mac.          |
 | ⚡️ **Native**           | Uses macOS built-in "Quick Actions" and JXA (JavaScript for Automation). |
 | 🔒 **Private**           | Your API key is stored locally on your machine.                          |
-| 🛠 **Customizable**       | Easily change the AI prompt or model.                                    |
+| 🛠 **Customizable**       | Easily change the AI prompts or model.                                   |
 
 ---
 
@@ -36,7 +52,7 @@ If you don't have a key yet, follow these simple steps:
 1. Go to [platform.openai.com](https://platform.openai.com) and log in or sign up.
 2. Click on **Dashboard → API Keys** in the left menu.
 3. Click **+ Create new secret key**.
-4. Name it "Mac Rewrite" and click **Create secret key**.
+4. Name it "Mac AI Shortcuts" and click **Create secret key**.
 5. Copy the key (it starts with `sk-...`).
 6. Paste it into the terminal when the installer asks for it.
 
@@ -49,10 +65,10 @@ If you don't have a key yet, follow these simple steps:
 1. Open any app (TextEdit, Notes, Chrome, Slack, etc.).
 2. **Select/Highlight** some text.
 3. **Right Click** the selection.
-4. Go to **Services** (or just look at the bottom of the menu).
-5. Click **✨ AI Rewrite**.
+4. Go to **Services** (or look at the bottom of the menu).
+5. Click any **AI shortcut** (e.g., AI Rewrite, AI Summarize).
 
-The selected text will briefly freeze while the AI thinks, and then it will be replaced by the improved version.
+The selected text will be replaced by the AI-transformed version.
 
 ### First Run Permissions
 
@@ -65,24 +81,37 @@ The first time you run this, macOS might ask for permission.
 
 ## ⚙️ Customization
 
-Want to change the prompt (e.g., "Make it funny" instead of "Professional") or change the model to GPT-4?
-
-The logic file is stored at `~/.mac-ai-companion/rewrite.js`. You can edit it with any text editor.
+Want to change a prompt or switch to GPT-4? All scripts are stored at `~/.mac-ai-companion/`.
 
 1. Open Terminal.
-2. Type: `open ~/.mac-ai-companion/rewrite.js`
-3. Find the `messages` section and change the `content` instructions:
+2. Type: `open ~/.mac-ai-companion/`
+3. Edit any `.js` file with a text editor.
+4. Find the `messages` section and change the `content`:
 
 ```javascript
-// Example change:
+// Example: Make the rewrite sarcastic
 {"role": "system", "content": "You are a sarcastic comedian. Rewrite this text to be funny."}
 ```
+
+### Available Scripts
+
+| File                | Shortcut          |
+| ------------------- | ----------------- |
+| `rewrite.js`        | AI Rewrite        |
+| `summarize.js`      | AI Summarize      |
+| `fix-grammar.js`    | AI Fix Grammar    |
+| `make-casual.js`    | AI Make Casual    |
+| `make-shorter.js`   | AI Make Shorter   |
+| `expand.js`         | AI Expand         |
+| `translate.js`      | AI Translate      |
+| `explain-simply.js` | AI Explain Simply |
+| `reply.js`          | AI Reply          |
 
 ---
 
 ## 🗑 Uninstalling
 
-To remove the tool completely, run this in your terminal:
+To remove all shortcuts completely, run this in your terminal:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/AniruddhaChattopadhyay/ai-shortcuts/main/uninstall.sh | bash
@@ -96,7 +125,7 @@ For developers wondering how this works without Python:
 
 | Component                           | Purpose                                                         |
 | ----------------------------------- | --------------------------------------------------------------- |
-| **Automator**                       | Creates the Service menu item.                                  |
+| **Automator**                       | Creates the Quick Action menu items.                            |
 | **JXA (JavaScript for Automation)** | Uses standard macOS built-in JavaScript engine to handle logic. |
 | **cURL**                            | Handles the HTTP request to OpenAI securely.                    |
 
