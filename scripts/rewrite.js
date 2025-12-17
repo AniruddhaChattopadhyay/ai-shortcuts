@@ -27,16 +27,21 @@ function run(argv) {
     ]
   };
 
-  var tempFile = "/tmp/ai_request_" + (Math.floor(Math.random() * 10000)) + ".json";
   var strPayload = JSON.stringify(payload);
+  var tempFile = "/tmp/ai_request_" + (Math.floor(Math.random() * 10000)) + ".json";
 
-  var file = app.openForAccess(Path(tempFile), { writePermission: true });
-  app.setEof(file, { to: 0 });
-  app.write(strPayload, { to: file, startingAt: 0 });
-  app.closeAccess(file);
+  // Use shell printf which handles UTF-8 correctly
+  var escapedPayload = strPayload.replace(/'/g, "'\\''");
+  var writeCmd = "printf '%s' '" + escapedPayload + "' > " + tempFile;
+
+  try {
+    app.doShellScript(writeCmd);
+  } catch (e) {
+    return "Error writing file";
+  }
 
   var curlCommand = 'curl -s -X POST https://api.openai.com/v1/chat/completions ' +
-    '-H "Content-Type: application/json" ' +
+    '-H "Content-Type: application/json; charset=utf-8" ' +
     '-H "Authorization: Bearer ' + apiKey + '" ' +
     '-d @' + tempFile;
 

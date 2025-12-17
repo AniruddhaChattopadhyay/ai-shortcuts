@@ -9,7 +9,7 @@ function run(argv) {
 
   var home = app.systemAttribute('HOME');
   var configPath = home + "/.mac-ai-companion/config.json";
-
+  
   try {
     var configStr = app.read(Path(configPath));
     var config = JSON.parse(configStr);
@@ -22,21 +22,26 @@ function run(argv) {
   var payload = {
     "model": model,
     "messages": [
-      { "role": "system", "content": "Make the user's text shorter and more concise while preserving the key meaning. Remove unnecessary words and fluff. Only output the shortened text." },
-      { "role": "user", "content": inputText }
+      {"role": "system", "content": "Make the user's text shorter and more concise while preserving the key meaning. Remove unnecessary words and fluff. Only output the shortened text."},
+      {"role": "user", "content": inputText}
     ]
   };
-
-  var tempFile = "/tmp/ai_request_" + (Math.floor(Math.random() * 10000)) + ".json";
+  
   var strPayload = JSON.stringify(payload);
-
-  var file = app.openForAccess(Path(tempFile), { writePermission: true });
-  app.setEof(file, { to: 0 });
-  app.write(strPayload, { to: file, startingAt: 0 });
-  app.closeAccess(file);
+  var tempFile = "/tmp/ai_request_" + (Math.floor(Math.random() * 10000)) + ".json";
+  
+  // Use shell printf which handles UTF-8 correctly
+  var escapedPayload = strPayload.replace(/'/g, "'\\''");
+  var writeCmd = "printf '%s' '" + escapedPayload + "' > " + tempFile;
+  
+  try {
+    app.doShellScript(writeCmd);
+  } catch (e) {
+    return "Error writing file";
+  }
 
   var curlCommand = 'curl -s -X POST https://api.openai.com/v1/chat/completions ' +
-    '-H "Content-Type: application/json" ' +
+    '-H "Content-Type: application/json; charset=utf-8" ' +
     '-H "Authorization: Bearer ' + apiKey + '" ' +
     '-d @' + tempFile;
 
