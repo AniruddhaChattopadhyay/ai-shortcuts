@@ -14,12 +14,13 @@ function run(argv) {
     var configStr = app.read(Path(configPath));
     var config = JSON.parse(configStr);
     var apiKey = config.api_key;
+    var model = config.model || "gpt-5-nano";
   } catch (e) {
     return "Error: Could not read API Key. Please reinstall.";
   }
 
   var payload = {
-    "model": "gpt-4o-mini",
+    "model": model,
     "messages": [
       { "role": "system", "content": "Make the user's text shorter and more concise while preserving the key meaning. Remove unnecessary words and fluff. Only output the shortened text." },
       { "role": "user", "content": inputText }

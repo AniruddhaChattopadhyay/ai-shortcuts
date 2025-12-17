@@ -14,12 +14,13 @@ function run(argv) {
     var configStr = app.read(Path(configPath));
     var config = JSON.parse(configStr);
     var apiKey = config.api_key;
+    var model = config.model || "gpt-5-nano";
   } catch (e) {
     return "Error: Could not read API Key. Please reinstall.";
   }
 
   var payload = {
-    "model": "gpt-4o-mini",
+    "model": model,
     "messages": [
       { "role": "system", "content": "Detect the language of the user's text. If it's in English, translate it to Spanish. If it's in any other language, translate it to English. Only output the translated text." },
       { "role": "user", "content": inputText }

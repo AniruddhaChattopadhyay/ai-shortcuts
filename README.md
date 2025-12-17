@@ -41,7 +41,10 @@ Open your Terminal app and paste the following command:
 curl -sL https://raw.githubusercontent.com/AniruddhaChattopadhyay/ai-shortcuts/main/install.sh | bash
 ```
 
-> **Note:** You will be asked to paste your OpenAI API Key during installation.
+> **Note:** You will be asked to:
+>
+> 1. Enter your OpenAI API Key
+> 2. Choose your preferred AI model (gpt-5.2, gpt-5-mini, gpt-5-nano, or gpt-4o)
 
 ---
 
@@ -81,7 +84,25 @@ The first time you run this, macOS might ask for permission.
 
 ## ⚙️ Customization
 
-Want to change a prompt or switch to GPT-4? All scripts are stored at `~/.mac-ai-companion/`.
+### Change Model
+
+To switch to a different model after installation, edit `~/.mac-ai-companion/config.json`:
+
+```bash
+open ~/.mac-ai-companion/config.json
+```
+
+Change the `"model"` value to one of:
+
+- `"gpt-5.2"` - Latest, most capable
+- `"gpt-5-mini"` - Fast and cost-efficient
+- `"gpt-5-nano"` - Fastest and most affordable
+- `"gpt-4o"` - Previous generation, reliable
+- `"gpt-4o-mini"` - Fast and affordable
+
+### Change Prompts
+
+All scripts are stored at `~/.mac-ai-companion/`.
 
 1. Open Terminal.
 2. Type: `open ~/.mac-ai-companion/`
