@@ -20,7 +20,7 @@ function run(argv) {
     return "Error: Could not read config. Please reinstall.";
   }
 
-  var systemPrompt = "Translate the user's text. If it's in English, translate to Spanish. If it's in Spanish or another language, translate to English. Only output the translated text.";
+  var systemPrompt = "If the text is not in English, translate it to English. If the text is already in English, return it exactly as is without any changes. Only output the text, nothing else.";
   var tempFile = "/tmp/ai_request_" + (Math.floor(Math.random() * 10000)) + ".json";
   var curlCommand = "";
   var payload = {};

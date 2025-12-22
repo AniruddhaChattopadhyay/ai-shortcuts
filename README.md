@@ -20,7 +20,7 @@ Highlight text anywhere (Notes, Slack, Browser, Mail), Right-Click, and watch it
 | **😊 AI Make Casual**    | Rewrite in a friendly, conversational tone      |
 | **✂️ AI Make Shorter**   | Condense while keeping the meaning              |
 | **📖 AI Expand**         | Elaborate and add more detail                   |
-| **🌐 AI Translate**      | English → Spanish or Other → English            |
+| **🌐 AI Translate**      | Translate any language to English               |
 | **💡 AI Explain Simply** | Explain in simple terms anyone can understand   |
 | **💬 AI Reply**          | Draft a response to a message                   |
 
